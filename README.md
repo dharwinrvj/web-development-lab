@@ -1,2 +1,2 @@
 # web-development-lab
-## Internet Programming Laboratory Programmes
+## Internet Programming Laboratory Applications
