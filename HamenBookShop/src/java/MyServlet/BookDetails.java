@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dharwin
  */
-@WebServlet(name = "BookDetails", urlPatterns = {"/BookDetails"})
+@WebServlet(name = "BookDetails", urlPatterns = { "/BookDetails" })
 public class BookDetails extends HttpServlet {
 
     bookdetailsinventory obj[] = new bookdetailsinventory[5];
@@ -25,10 +25,10 @@ public class BookDetails extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,7 +49,7 @@ public class BookDetails extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BookDetails</title>");
+            out.println("<title>HamenBookShop</title>");
             out.println("</head>");
             out.println("<body>");
 
@@ -57,13 +57,15 @@ public class BookDetails extends HttpServlet {
             for (int i = 0; i < 5; i++) {
                 if (title.equalsIgnoreCase(obj[i].title) && author.equalsIgnoreCase(obj[i].author)) {
                     f = 1;
-                    out.println("<h1>Book " + title + " found </h1>");
+                    out.println("<h1> Book " + title + " found </h1>");
                     out.println("<h3> Title : " + obj[i].title + "</h3>");
                     out.println("<h3> Author : " + obj[i].author + "</h3>");
                     out.println("<h3> Price : " + obj[i].price + "</h3>");
                     out.println("<h3> Publisher : " + obj[i].publisher + "</h3>");
 
-                    out.println("<br><br><br><form action='BookDetails' method='post' ><label >Number of Copies required </label><span><input type='text' name='count'></span><br><input type='hidden' name='posn' value=" + i + "><br><input type='submit' value='SEARCH'></form>");
+                    out.println(
+                            "<br><br><br><form action='BookDetails' method='post' ><label >Number of Copies required </label><span><input type='text' name='count'></span><br><input type='hidden' name='posn' value="
+                                    + i + "><br><input type='submit' value='SEARCH'></form>");
 
                     out.println("</body>");
                     out.println("</html>");
@@ -75,23 +77,23 @@ public class BookDetails extends HttpServlet {
                 out.println("</html></body>");
 
             }
-        }
-        finally {            
+        } finally {
             out.close();
+        }
     }
-}
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request  servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException      if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -100,30 +102,29 @@ public class BookDetails extends HttpServlet {
      * Handles the HTTP
      * <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-            int count=Integer.parseInt(request.getParameter("count"));
-            int pos=Integer.parseInt(request.getParameter("posn"));
-            PrintWriter out = response.getWriter();
-            if(count<obj[pos].stock || count==obj[pos].stock){
-               out.println("<html><body>");
-               out.println("<h1>Total Bill Amount : "+((obj[pos].price)*count)+"</h1>");
-               out.println("</html></body>");   
-            }
-            else{
-                out.println("<html><body>");
-               out.println("<h2>Out of stock come again later</h2>");
-               out.println("<h3>Requested Stocks - "+count+"</h3>");
-               out.println("<h3>Only "+obj[pos].stock+" stock left</h3>");
-               out.println("</html></body>");  
-            }
+        // processRequest(request, response);
+        int count = Integer.parseInt(request.getParameter("count"));
+        int pos = Integer.parseInt(request.getParameter("posn"));
+        PrintWriter out = response.getWriter();
+        if (count < obj[pos].stock || count == obj[pos].stock) {
+            out.println("<html><body>");
+            out.println("<h1>Total Bill Amount : " + ((obj[pos].price) * count) + "</h1>");
+            out.println("</html></body>");
+        } else {
+            out.println("<html><body>");
+            out.println("<h2>Out of stock come again later</h2>");
+            out.println("<h3>Requested Stocks - " + count + "</h3>");
+            out.println("<h3>Only " + obj[pos].stock + " stock left</h3>");
+            out.println("</html></body>");
+        }
     }
 
     /**
@@ -132,13 +133,13 @@ public class BookDetails extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
-    
 
-}// </editor-fold>
+    }// </editor-fold>
 }
-    class bookdetailsinventory {
+
+class bookdetailsinventory {
 
     String title;
     String author;
