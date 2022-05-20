@@ -4,19 +4,18 @@
  */
 package MyServlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
- *
  * @author dharwin
  */
-@WebServlet(name = "BookDetails", urlPatterns = { "/BookDetails" })
+@WebServlet(name = "BookDetails", urlPatterns = {"/BookDetails"})
 public class BookDetails extends HttpServlet {
 
     bookdetailsinventory obj[] = new bookdetailsinventory[5];
@@ -84,6 +83,7 @@ public class BookDetails extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
     // + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
